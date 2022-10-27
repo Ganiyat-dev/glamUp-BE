@@ -11,14 +11,9 @@ import javax.persistence.OneToOne;
 @NoArgsConstructor
 
 public class Client extends BaseEntity{
-
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phoneNumber;
+    private int age;
     private Enum gender;
 
-    @OneToOne(mappedBy = "client")
-    private Address address;
-
+    @OneToOne
+    private User user;
 }
