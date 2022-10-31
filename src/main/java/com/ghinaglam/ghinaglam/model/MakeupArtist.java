@@ -12,7 +12,6 @@ import java.util.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class MakeupArtist extends BaseEntity{
    private String license;
    private int yearsOfExperience;

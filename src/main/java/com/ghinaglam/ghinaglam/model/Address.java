@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Address extends BaseEntity{
     private int houseNumber;
     private String street;
