@@ -1,11 +1,14 @@
 package com.ghinaglam.ghinaglam.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 
 public class User extends BaseEntity{
@@ -20,6 +23,7 @@ public class User extends BaseEntity{
     @OneToMany
     private List<Address> address;
 
+//    todo: research if user to appointment is many to many relationship
     @OneToMany(mappedBy = "user")
     private List<Appointment> appointments;
 

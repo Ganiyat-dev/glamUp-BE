@@ -1,13 +1,16 @@
 package com.ghinaglam.ghinaglam.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Appointment extends BaseEntity{
     @ManyToOne

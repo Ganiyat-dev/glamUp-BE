@@ -1,14 +1,15 @@
 package com.ghinaglam.ghinaglam.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.*;
 
-@Data
+
 @Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
