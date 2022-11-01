@@ -1,8 +1,6 @@
 package com.ghinaglam.ghinaglam.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +8,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
 public class User extends BaseEntity{
     private String firstName;
     private String lastName;
@@ -20,8 +20,9 @@ public class User extends BaseEntity{
     private String phoneNumber;
     private String password;
 
-    @OneToMany
-    private List<Address> address;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id")
+    private Address address;
 
 //    todo: research if user to appointment is many to many relationship
     @OneToMany(mappedBy = "user")
