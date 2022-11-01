@@ -3,7 +3,9 @@ package com.ghinaglam.ghinaglam.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,9 +22,8 @@ public class User extends BaseEntity{
     private String phoneNumber;
     private String password;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @OneToMany(mappedBy = "user")
+    private Set<Address> address = new HashSet<>();
 
 //    todo: research if user to appointment is many to many relationship
     @OneToMany(mappedBy = "user")
