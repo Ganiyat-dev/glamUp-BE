@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -24,11 +23,6 @@ public class Client extends BaseEntity{
     private String password;
     private int age;
 
-//    @ManyToMany
-//    @JoinTable(name= "user_category", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    public Set<Category> getCategory() {
-//        return categories;
-//    }
 
     @OneToMany(mappedBy = "client")
     private List<Appointment> appointments;
