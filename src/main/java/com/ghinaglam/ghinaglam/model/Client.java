@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "clients")
-public class Client extends BaseEntity{
+public class Client extends BaseEntity {
     private String firstName;
     private String lastName;
     //    @Column(name = "email", unique = true)

@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface MakeupService {
     List<MakeupArtist> getMakeupArtists();
+
     MakeUpDto getMakeupArtist(String email);
+
     MakeUpDto saveMakeupArtist(MakeUpDto makeUpDto);
+
     MakeUpDto updateMakeupArtist(Long id, MakeUpDto makeUpDto);
 
     String deleteMakeupArtist(Long id);
