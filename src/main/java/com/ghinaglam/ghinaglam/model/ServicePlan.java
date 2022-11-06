@@ -8,6 +8,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +20,6 @@ public class ServicePlan extends BaseEntity {
     private String serviceDetails;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Plan> plan = new ArrayList<>();
+    private List<Plan> plan = new ArrayList<>();
 
 }

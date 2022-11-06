@@ -1,6 +1,7 @@
 package com.ghinaglam.ghinaglam.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,6 +18,7 @@ import java.sql.Timestamp;
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,4 @@ public class BaseEntity implements Serializable {
     @UpdateTimestamp
     protected Timestamp updatedAt;
 
-    public BaseEntity(Long id) {
-        this.id = id;
-    }
 }

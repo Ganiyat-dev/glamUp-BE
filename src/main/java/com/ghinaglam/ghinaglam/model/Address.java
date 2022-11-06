@@ -16,6 +16,10 @@ public class Address extends BaseEntity{
     private String state;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "makeup_artist_id")
+    private MakeupArtist makeupArtist;
 }
