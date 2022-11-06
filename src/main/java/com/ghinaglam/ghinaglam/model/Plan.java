@@ -23,7 +23,7 @@ public class Plan extends BaseEntity{
     private String planSession;
 
     @ManyToMany(mappedBy = "plan")
-    private Collection<ServicePlan> servicePlans = new ArrayList<>();
+    private List<ServicePlan> servicePlans = new ArrayList<>();
 
     @OneToMany
     private List<Appointment> appointment;
