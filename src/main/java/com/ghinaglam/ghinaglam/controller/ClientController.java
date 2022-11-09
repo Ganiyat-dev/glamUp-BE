@@ -18,7 +18,7 @@ public class ClientController extends BaseEntity {
     private final ClientService clientService;
 
     @GetMapping("/clients")
-    public ResponseEntity<List<Client>> getAllClients(){
+    public ResponseEntity<List<Client>> getAllClients() {
         return ResponseEntity.ok().body(clientService.getAllClients());
     }
 
