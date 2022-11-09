@@ -15,23 +15,23 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "makeup_artists")
-public class MakeupArtist extends BaseEntity{
-   private String firstName;
-   private String lastName;
-   private String email;
-   //    @Column(unique = true)
-   private String phoneNumber;
-   private String password;
-   private String license;
-   private int yearsOfExperience;
-   private double salary;
+public class MakeupArtist extends BaseEntity {
+    private String firstName;
+    private String lastName;
+    private String email;
+    //    @Column(unique = true)
+    private String phoneNumber;
+    private String password;
+    private String license;
+    private int yearsOfExperience;
+    private double salary;
 //    @ManyToMany
 //    @JoinTable(name= "user_category", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 //    public Set<Category> getCategory() {
 //        return categories;
 //    }
 
-   @OneToMany(mappedBy = "makeupArtist")
-   private List<Appointment> appointments;
+    @OneToMany(mappedBy = "makeupArtist")
+    private List<Appointment> appointments;
 
 }

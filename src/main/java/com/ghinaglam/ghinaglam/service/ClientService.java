@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface ClientService {
     List<Client> getAllClients();
+
     ClientDto getClient(String email);
+
     ClientDto saveClient(ClientDto clientDto);
+
     ClientDto updateClient(Long id, ClientDto clientDto);
 
     String deleteClient(Long id);

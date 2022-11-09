@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -19,10 +20,12 @@ import java.util.List;
 public class MakeupServiceImpl implements MakeupService {
     private final MakeupRepository makeupRepository;
     private final ModelMapper mapper = new ModelMapper();
+
     @Override
     public List<MakeupArtist> getMakeupArtists() {
         return makeupRepository.findAll();
     }
+
     @Override
     public MakeUpDto getMakeupArtist(String email) {
         if (makeupRepository.existsByEmail(email)) {
@@ -34,11 +37,12 @@ public class MakeupServiceImpl implements MakeupService {
     @Override
     public MakeUpDto saveMakeupArtist(MakeUpDto makeUpDto) {
         MakeupArtist makeupArtist = mapToEntity(makeUpDto);
-        if(makeupRepository.existsByEmail(makeupArtist.getEmail())) {
+        if (makeupRepository.existsByEmail(makeupArtist.getEmail())) {
             throw new IllegalStateException("Email Already Exists");
         }
         return mapToDto(makeupRepository.save(makeupArtist));
     }
+
     @Transactional
     public MakeUpDto updateMakeupArtist(Long id, MakeUpDto makeUpDto) {
         MakeupArtist makeupArtist = makeupRepository.findById(id).orElseThrow(() -> new IllegalStateException(
@@ -49,6 +53,7 @@ public class MakeupServiceImpl implements MakeupService {
 
         return mapToDto(makeupRepository.save(makeupArtist));
     }
+
     @Override
     public String deleteMakeupArtist(Long id) {
         if (makeupRepository.existsById(id)) {
@@ -61,6 +66,7 @@ public class MakeupServiceImpl implements MakeupService {
     private MakeUpDto mapToDto(MakeupArtist makeupArtist) {
         return mapper.map(makeupArtist, MakeUpDto.class);
     }
+
     private MakeupArtist mapToEntity(MakeUpDto makeUpDto) {
         return mapper.map(makeUpDto, MakeupArtist.class);
     }

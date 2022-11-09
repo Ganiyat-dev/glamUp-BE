@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class AppointmentAssigned extends BaseEntity{
+public class AppointmentAssigned extends BaseEntity {
     @OneToOne
     private Appointment appointment;
 

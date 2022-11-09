@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "plans")
-public class Plan extends BaseEntity{
+public class Plan extends BaseEntity {
     private String planName;
     private String planDescription;
     private int planPrice;

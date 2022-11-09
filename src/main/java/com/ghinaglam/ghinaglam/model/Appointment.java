@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "appointments")
-public class Appointment extends BaseEntity{
+public class Appointment extends BaseEntity {
     private String name;
     private String phoneNumber;
     private LocalDate startDate;

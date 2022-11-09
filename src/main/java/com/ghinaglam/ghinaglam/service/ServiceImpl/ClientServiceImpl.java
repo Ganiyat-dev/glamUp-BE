@@ -29,7 +29,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDto getClient(String email) {
-        if(clientRepository.existsByEmail(email)) {
+        if (clientRepository.existsByEmail(email)) {
             return mapToDto(clientRepository.findByEmail(email));
         }
         throw new ResourceNotFoundException("Client not found");
@@ -38,7 +38,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDto saveClient(ClientDto clientDto) {
         Client client = mapToEntity(clientDto);
-        if(clientRepository.existsByEmail(client.getEmail())) {
+        if (clientRepository.existsByEmail(client.getEmail())) {
             throw new IllegalStateException("Email already exists");
         }
         return mapToDto(clientRepository.save(client));
@@ -54,6 +54,7 @@ public class ClientServiceImpl implements ClientService {
 
         return mapToDto(clientRepository.save(client));
     }
+
     @Override
     public String deleteClient(Long id) {
         if (clientRepository.existsById(id)) {
