@@ -10,8 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address extends BaseEntity {
-    private int houseNumber;
-    private String street;
+    private String streetAddress;
     private String city;
     private String state;
 
