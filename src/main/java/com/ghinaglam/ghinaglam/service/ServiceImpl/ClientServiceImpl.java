@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -23,8 +24,8 @@ public class ClientServiceImpl implements ClientService {
     private final ModelMapper mapper = new ModelMapper();
 
     @Override
-    public List<Client> getAllClients() {
-        return clientRepository.findAll();
+    public List<ClientDto> getAllClients() {
+        return clientRepository.findAll().stream().map(this::mapToDto).toList();
     }
 
     @Override
@@ -65,10 +66,18 @@ public class ClientServiceImpl implements ClientService {
     }
 
     private ClientDto mapToDto(Client client) {
+        String[] address = client.getAddress().split("\n");
+        client.setStreetAddress(address[0]);
+        client.setCity(address[1]);
+        client.setState(address[2]);
         return mapper.map(client, ClientDto.class);
     }
 
     private Client mapToEntity(ClientDto clientDto) {
+        String address = clientDto.getStreetAddress() + "\n" + clientDto.getCity() + "\n" +
+                clientDto.getState();
+        clientDto.setAddress(address);
         return mapper.map(clientDto, Client.class);
     }
 }
+
