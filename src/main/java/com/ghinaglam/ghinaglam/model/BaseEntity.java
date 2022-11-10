@@ -14,7 +14,6 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor

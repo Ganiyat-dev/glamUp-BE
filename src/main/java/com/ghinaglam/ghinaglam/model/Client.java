@@ -21,8 +21,9 @@ public class Client extends BaseEntity {
     //    @Column(unique = true)
     private String phoneNumber;
     private String password;
-    private int age;
+    private String address;
 
+    private Category category;
 
     @OneToMany(mappedBy = "client")
     private List<Appointment> appointments;

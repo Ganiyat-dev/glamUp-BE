@@ -26,10 +26,6 @@ public class ClientController extends BaseEntity {
     public ResponseEntity<ClientDto> getClient(@PathVariable(value = "email") String email) {
         return ResponseEntity.ok().body(clientService.getClient(email));
     }
-//    @GetMapping("/client/{id}")
-//    public ResponseEntity<ClientDto> getClientById(@PathVariable(value = "id") Long id) {
-//        return ResponseEntity.ok().body(clientService.getClientById(id));
-//    }
 
     @PostMapping("/client")
     public ResponseEntity<ClientDto> saveClient(@RequestBody ClientDto clientDto) {

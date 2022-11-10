@@ -1,22 +1,23 @@
 package com.ghinaglam.ghinaglam.dto;
-
-import com.ghinaglam.ghinaglam.model.BaseEntity;
-import lombok.Data;
+import com.ghinaglam.ghinaglam.model.Category;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.Email;
 
 @Getter
 @Setter
-public class ClientDto extends BaseEntity {
+public class ClientDto {
+    private Long id;
     private String firstName;
     private String lastName;
-    @Email
+    //    @Column(name = "email", unique = true)
     private String email;
-
+    //    @Column(unique = true)
     private String phoneNumber;
     private String password;
     private int age;
+
+    private String address;
+    private Category category;
 
 }
