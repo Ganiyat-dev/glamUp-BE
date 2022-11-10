@@ -6,7 +6,7 @@ import com.ghinaglam.ghinaglam.model.Client;
 import java.util.List;
 
 public interface ClientService {
-    List<Client> getAllClients();
+    List<ClientDto> getAllClients();
 
     ClientDto getClient(String email);
 

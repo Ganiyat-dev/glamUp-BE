@@ -3,18 +3,38 @@ import com.ghinaglam.ghinaglam.model.Category;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
+
 
 @Getter
 @Setter
 public class ClientDto {
     private Long id;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
-    //    @Column(name = "email", unique = true)
+
+    @NotEmpty
+    @Column(name = "email", unique = true)
     private String email;
-    //    @Column(unique = true)
-    private String phoneNumber;
+
+    @NotEmpty
+    @Column(unique = true)
+
+    @NotEmpty
     private String password;
+
+    private String phoneNumber;
+
+    private String streetAddress;
+
+    private String city;
+
+    private String state;
+
+
     private int age;
 
     private String address;

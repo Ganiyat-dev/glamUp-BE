@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.List;
 
 @Getter
@@ -24,6 +25,13 @@ public class Client extends BaseEntity {
     private String address;
 
     private Category category;
+
+    @Transient
+    private String streetAddress;
+    @Transient
+    private String city;
+    @Transient
+    private String state;
 
     @OneToMany(mappedBy = "client")
     private List<Appointment> appointments;
