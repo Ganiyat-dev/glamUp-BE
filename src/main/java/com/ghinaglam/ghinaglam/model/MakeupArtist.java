@@ -25,6 +25,8 @@ public class MakeupArtist extends BaseEntity {
     private String license;
     private int yearsOfExperience;
     private double salary;
+
+    private Boolean isApproved = false;
 //    @ManyToMany
 //    @JoinTable(name= "user_category", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 //    public Set<Category> getCategory() {

@@ -19,8 +19,8 @@ import java.util.List;
 public class Plan extends BaseEntity {
     private String planName;
     private String planDescription;
-    private int planPrice;
-    private String planSession;
+    private double planPrice;
+    private int planSession;
 
     @ManyToMany(mappedBy = "plan")
     private List<ServicePlan> servicePlans = new ArrayList<>();
