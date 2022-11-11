@@ -34,7 +34,6 @@ public class ClientDto {
 
     private String state;
 
-
     private int age;
 
     private String address;
