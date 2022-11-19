@@ -4,6 +4,7 @@ import com.ghinaglam.ghinaglam.dto.ClientDto;
 import com.ghinaglam.ghinaglam.model.Client;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClientService {
     List<ClientDto> getAllClients();

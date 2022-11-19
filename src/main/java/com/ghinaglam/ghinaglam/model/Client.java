@@ -19,6 +19,7 @@ public class Client extends BaseEntity {
     private String lastName;
     //    @Column(name = "email", unique = true)
     private String email;
+    private String gender;
     //    @Column(unique = true)
     private String phoneNumber;
     private String password;
@@ -34,5 +35,5 @@ public class Client extends BaseEntity {
     private String state;
 
     @OneToMany(mappedBy = "client")
-    private List<Appointment> appointments;
+    private List<AppointmentAssigned> appointmentAssigned;
 }

@@ -23,10 +23,10 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    @CreationTimestamp
-    protected Timestamp createdAt;
-
-    @UpdateTimestamp
-    protected Timestamp updatedAt;
+//    @CreationTimestamp
+//    protected Timestamp createdAt;
+//
+//    @UpdateTimestamp
+//    protected Timestamp updatedAt;
 
 }

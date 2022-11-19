@@ -34,9 +34,9 @@ public class ClientDto {
 
     private String state;
 
-    private int age;
-
+    private String gender;
     private String address;
+
     private Category category;
 
 }
