@@ -25,7 +25,7 @@ public class Client extends BaseEntity {
     private String password;
     private String address;
 
-    private Category category;
+    private Category category = Category.CLIENT;
 
     @Transient
     private String streetAddress;
@@ -34,6 +34,6 @@ public class Client extends BaseEntity {
     @Transient
     private String state;
 
-    @OneToMany(mappedBy = "client")
-    private List<AppointmentAssigned> appointmentAssigned;
+//    @OneToMany(mappedBy = "client")
+//    private List<AppointmentAssigned> appointmentAssigned;
 }

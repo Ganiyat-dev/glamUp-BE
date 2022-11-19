@@ -1,9 +1,9 @@
 package com.ghinaglam.ghinaglam.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.LocalDate;
 
 @Getter
@@ -17,7 +17,7 @@ public class Appointment extends BaseEntity {
     private Status status = Status.PENDING;
     private Boolean isAssigned = false;
 
-
+    @JsonIgnore
     @ManyToOne
     private Plan plan;
     @ManyToOne

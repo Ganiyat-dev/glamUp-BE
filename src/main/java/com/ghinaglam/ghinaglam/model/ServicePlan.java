@@ -1,13 +1,11 @@
 package com.ghinaglam.ghinaglam.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Getter
@@ -19,7 +17,8 @@ public class ServicePlan extends BaseEntity {
     private String serviceName;
     private String serviceDetails;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToMany
     private List<Plan> plan = new ArrayList<>();
 
 }

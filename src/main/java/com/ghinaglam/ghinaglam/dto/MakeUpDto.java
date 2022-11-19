@@ -19,5 +19,5 @@ public class MakeUpDto{
     private String license;
     private int yearsOfExperience;
     private double salary;
-    private Category category;
+    private Category category = Category.MAKEUP_ARTIST;
 }
