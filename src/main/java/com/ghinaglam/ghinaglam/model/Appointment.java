@@ -17,7 +17,6 @@ public class Appointment extends BaseEntity {
     private Status status = Status.PENDING;
     private Boolean isAssigned = false;
 
-    @JsonIgnore
     @ManyToOne
     private Plan plan;
     @ManyToOne

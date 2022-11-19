@@ -56,8 +56,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> getAllAppointments() { //Only Admin is authorized to perform this action
-        return appointmentRepository.findAll();
+    public List<AppointmentDto> getAllAppointments() { //Only Admin is authorized to perform this action
+        return appointmentRepository.findAll().stream().map(this::mapToDto).toList();
     }
     @Override
     public void getAppointmentById(Long appointmentId) {

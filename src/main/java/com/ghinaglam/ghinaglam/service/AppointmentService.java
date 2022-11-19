@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface AppointmentService {
     AppointmentDto createAppointment(Long clientId, Long planId, AppointmentDto appointmentDto);
     AppointmentDto updateAppointmentStatus(Long appointmentId, Status status);
-    List<Appointment> getAllAppointments();
+    List<AppointmentDto> getAllAppointments();
     List<AppointmentDto> getAppointmentByStatus(Status status);
     List<Appointment> getAppointmentByStartDate(LocalDate startDate);
 
