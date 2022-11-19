@@ -1,4 +1,5 @@
 package com.ghinaglam.ghinaglam.dto;
+import com.ghinaglam.ghinaglam.model.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,4 +19,5 @@ public class MakeUpDto{
     private String license;
     private int yearsOfExperience;
     private double salary;
+    private Category category;
 }

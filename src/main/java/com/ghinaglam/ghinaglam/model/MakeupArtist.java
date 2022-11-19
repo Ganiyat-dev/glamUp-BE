@@ -22,9 +22,11 @@ public class MakeupArtist extends BaseEntity {
     //    @Column(unique = true)
     private String phoneNumber;
     private String password;
+    private String gender;
     private String license;
     private int yearsOfExperience;
     private double salary;
+    private Category category;
 
     private Boolean isApproved = false;
 //    @ManyToMany
@@ -34,6 +36,6 @@ public class MakeupArtist extends BaseEntity {
 //    }
 
     @OneToMany(mappedBy = "makeupArtist")
-    private List<Appointment> appointments;
+    private List<AppointmentAssigned> appointmentAssigned;
 
 }
