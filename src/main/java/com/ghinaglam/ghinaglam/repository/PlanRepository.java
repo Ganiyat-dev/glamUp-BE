@@ -7,8 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlanRepository extends JpaRepository<Plan, Long> {
     boolean existsByPlanName(String planName);
-
-    Plan findPlanById(Long id);
-
-//    Plan findByPlanName(String planName);
 }

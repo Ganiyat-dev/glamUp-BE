@@ -11,6 +11,7 @@ import com.ghinaglam.ghinaglam.repository.PlanRepository;
 import com.ghinaglam.ghinaglam.service.AppointmentService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
@@ -36,7 +38,8 @@ public class AppointmentServiceImpl implements AppointmentService {
                                             AppointmentDto appointmentDto) {
         Appointment appointment = mapToEntity(appointmentDto);
         Client client = clientRepository.findById(clientId).orElseThrow(() -> new IllegalStateException("Client with the id" + clientId + " not found"));
-        Plan plan = planRepository.findById(planId).orElseThrow(() -> new IllegalStateException("No plan found"));
+
+        Plan plan = planRepository.findById(planId).orElseThrow(() -> new IllegalStateException("No Plan found"));
         appointment.setClient(client);
         appointment.setPlan(plan);
         appointment.setStatus(Status.STARTED);
@@ -53,8 +56,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> getAllAppointments() { //Only Admin is authorized to perform this action
-        return appointmentRepository.findAll();
+    public List<AppointmentDto> getAllAppointments() { //Only Admin is authorized to perform this action
+        return appointmentRepository.findAll().stream().map(this::mapToDto).toList();
     }
     @Override
     public void getAppointmentById(Long appointmentId) {

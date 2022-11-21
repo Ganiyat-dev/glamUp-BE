@@ -26,16 +26,16 @@ public class AppointmentController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Appointment>> getAllAppointments() {
+    public ResponseEntity<List<AppointmentDto>> getAllAppointments() {
         return ResponseEntity.ok().body(appointmentService.getAllAppointments());
     }
 
-    @GetMapping("/{status}")
+    @GetMapping("/status/{status}")
     public ResponseEntity<List<AppointmentDto>> getAppointmentByStatus(@PathVariable("status") Status status) {
         return ResponseEntity.ok().body(appointmentService.getAppointmentByStatus(status));
 
     }
-    @GetMapping("/{date}")
+    @GetMapping("/date/{date}")
     public ResponseEntity<List<Appointment>> getAppointmentByStartDate(@PathVariable("date") LocalDate startDate) {
         return ResponseEntity.ok().body(appointmentService.getAppointmentByStartDate(startDate) );
 

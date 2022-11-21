@@ -26,7 +26,7 @@ public class MakeupArtist extends BaseEntity {
     private String license;
     private int yearsOfExperience;
     private double salary;
-    private Category category;
+    private Category category = Category.MAKEUP_ARTIST;
 
     private Boolean isApproved = false;
 //    @ManyToMany

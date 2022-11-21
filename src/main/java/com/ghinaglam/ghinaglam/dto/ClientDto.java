@@ -37,6 +37,6 @@ public class ClientDto {
     private String gender;
     private String address;
 
-    private Category category;
+    private Category category = Category.CLIENT;
 
 }

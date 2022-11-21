@@ -27,7 +27,7 @@ public class PlanServiceImpl implements PlanService {
     @Override
     public PlanDto getPlan(Long id) {
         if (planRepository.existsById(id)) {
-            return mapToDto(planRepository.findPlanById(id));
+            return mapToDto(planRepository.findById(id).orElseThrow(()-> new IllegalStateException("No Plan found")));
         }
         throw new IllegalStateException("Plan not found");
     }

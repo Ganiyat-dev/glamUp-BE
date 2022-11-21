@@ -1,5 +1,6 @@
 package com.ghinaglam.ghinaglam.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ public class Plan extends BaseEntity {
 
     @ManyToMany(mappedBy = "plan")
     private List<ServicePlan> servicePlans = new ArrayList<>();
-
+    @JsonIgnore
     @OneToMany
     private List<Appointment> appointment;
 
