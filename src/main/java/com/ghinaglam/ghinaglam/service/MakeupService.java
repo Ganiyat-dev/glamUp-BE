@@ -1,18 +1,19 @@
 package com.ghinaglam.ghinaglam.service;
 
 import com.ghinaglam.ghinaglam.dto.MakeUpDto;
-import com.ghinaglam.ghinaglam.model.MakeupArtist;
 
 import java.util.List;
 
 public interface MakeupService {
-    List<MakeupArtist> getMakeupArtists();
+    List<MakeUpDto> getMakeupArtists();
 
-    MakeUpDto getMakeupArtist(String email);
+    MakeUpDto getMakeupArtist(long id);
 
-    MakeUpDto saveMakeupArtist(MakeUpDto makeUpDto);
+    MakeUpDto saveMakeupArtist(MakeUpDto makeUpDto) throws Exception;
 
-    MakeUpDto updateMakeupArtist(Long id, MakeUpDto makeUpDto);
+    MakeUpDto updateMakeupArtist(long id, MakeUpDto makeUpDto);
 
-    String deleteMakeupArtist(Long id);
+    String deleteMakeupArtist(long id);
+
+
 }

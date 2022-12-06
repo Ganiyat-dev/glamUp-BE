@@ -2,10 +2,7 @@ package com.ghinaglam.ghinaglam.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.*;
 
 
@@ -14,24 +11,20 @@ import java.util.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "makeup_artists")
+@Table(name = "makeupArtists")
 public class MakeupArtist extends BaseEntity {
-    private String firstName;
-    private String lastName;
-    private String email;
-    //    @Column(unique = true)
-    private String phoneNumber;
-    private String password;
-    private String gender;
-    private String license;
+
+    @OneToOne
+    private AppUser appUser;
+    private String specialization;
     private int yearsOfExperience;
+
     private double salary;
-    private Category category = Category.MAKEUP_ARTIST;
 
     private Boolean isApproved = false;
 //    @ManyToMany
 //    @JoinTable(name= "user_category", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    public Set<Category> getCategory() {
+//    public Set<Role> getRole() {
 //        return categories;
 //    }
 

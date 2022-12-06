@@ -13,19 +13,19 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "appointments")
 public class Appointment extends BaseEntity {
     private LocalDateTime startDate;
-//    private LocalTime appointmentStartTime;
+    //    private LocalTime appointmentStartTime;
 //    private Timestamp appointmentStartTime;
     private LocalDateTime endDate;
     private Boolean isAssigned = false;
 
 
+
     @ManyToOne
     private Plan plan;
+    @JsonIgnore
     @ManyToOne
     private Client client;
 

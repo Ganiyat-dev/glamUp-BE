@@ -12,9 +12,12 @@ public interface PlanService {
 
     PlanDto getPlan(Long id);
 
-    PlanDto savePlan(PlanDto planDto);
+    void addServiceToPlan(long serviceId, long planId);
+
+    PlanDto savePlan(PlanDto planDto, List<Long> servicesId);
 
     String deletePlan(Long id);
 
     PlanDto updatePlan(Long id, PlanDto planDto);
+
 }

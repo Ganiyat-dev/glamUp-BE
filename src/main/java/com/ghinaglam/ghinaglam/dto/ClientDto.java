@@ -1,5 +1,5 @@
 package com.ghinaglam.ghinaglam.dto;
-import com.ghinaglam.ghinaglam.model.Category;
+import com.ghinaglam.ghinaglam.model.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,33 +10,24 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 public class ClientDto {
-    private Long id;
+    private long id;
     @NotEmpty
     private String firstName;
-    @NotEmpty
     private String lastName;
-
     @NotEmpty
     @Column(name = "email", unique = true)
     private String email;
 
     @NotEmpty
-    @Column(unique = true)
-
-    @NotEmpty
-    private String password;
-
+//    @Column(unique = true)
     private String phoneNumber;
-
     private String streetAddress;
-
     private String city;
-
     private String state;
-
     private String gender;
+    private String password;
     private String address;
-
-    private Category category = Category.CLIENT;
+    private Role roles = Role.CLIENT;
+    private RegistrationRequestDto user;
 
 }

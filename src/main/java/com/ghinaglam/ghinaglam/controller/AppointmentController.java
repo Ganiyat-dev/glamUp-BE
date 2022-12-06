@@ -18,11 +18,11 @@ import java.util.List;
 public class AppointmentController {
     private final AppointmentService appointmentService;
 
-    @PostMapping("/{clientId}/{planId}")
-    public ResponseEntity<AppointmentDto> createAppointment(@PathVariable("clientId") Long clientId,
+    @PostMapping("/{userId}/{planId}")
+    public ResponseEntity<AppointmentDto> createAppointment(@PathVariable("userId") Long userId,
                                                             @PathVariable("planId") Long planId,
                                                             @RequestBody AppointmentDto appointmentDto) {
-        return ResponseEntity.ok().body(appointmentService.createAppointment(clientId, planId, appointmentDto));
+        return ResponseEntity.ok().body(appointmentService.createAppointment(userId, planId, appointmentDto));
     }
 
     @GetMapping("/all")

@@ -1,9 +1,11 @@
 package com.ghinaglam.ghinaglam.service.ServiceImpl;
 
 import com.ghinaglam.ghinaglam.dto.AppointmentDto;
+import com.ghinaglam.ghinaglam.model.AppUser;
 import com.ghinaglam.ghinaglam.model.Appointment;
 import com.ghinaglam.ghinaglam.model.Client;
 import com.ghinaglam.ghinaglam.model.Plan;
+import com.ghinaglam.ghinaglam.repository.AppUserRepository;
 import com.ghinaglam.ghinaglam.repository.AppointmentRepository;
 import com.ghinaglam.ghinaglam.repository.ClientRepository;
 import com.ghinaglam.ghinaglam.repository.PlanRepository;
@@ -32,11 +34,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
     @Override
-    public AppointmentDto createAppointment(Long clientId, Long planId,
+    public AppointmentDto createAppointment(long userId, long planId,
                                             AppointmentDto appointmentDto) {
-        Client client = clientRepository.findById(clientId).orElseThrow(() -> new IllegalStateException("Client with the id" + clientId + " not found"));
+
+        Client client = clientRepository.findByAppUser_Id(userId).orElseThrow(() -> new IllegalStateException("Client with the id" + userId + " not found"));
         Plan plan = planRepository.findById(planId).orElseThrow(() -> new IllegalStateException("No Plan found"));
         appointmentDto.setEndDate(calcEndDate(appointmentDto.getStartDate(), plan.getPlanSession()));
+
 
         Appointment appointment = mapToEntity(appointmentDto);
         appointment.setClient(client);
@@ -59,7 +63,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.findAll().stream().map(this::mapToDto).toList();
     }
     @Override
-    public void getAppointmentById(Long appointmentId) {
+    public void getAppointmentById(long appointmentId) {
         appointmentRepository.findById(appointmentId);
     }
 

@@ -1,17 +1,18 @@
 package com.ghinaglam.ghinaglam.service.ServiceImpl;
 
 import com.ghinaglam.ghinaglam.dto.ClientDto;
-import com.ghinaglam.ghinaglam.exception.ResourceNotFoundException;
+import com.ghinaglam.ghinaglam.dto.RegistrationRequestDto;
+import com.ghinaglam.ghinaglam.model.AppUser;
 import com.ghinaglam.ghinaglam.model.Client;
 import com.ghinaglam.ghinaglam.repository.ClientRepository;
 import com.ghinaglam.ghinaglam.service.ClientService;
+import com.ghinaglam.ghinaglam.service.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -20,7 +21,7 @@ import java.util.List;
 @Slf4j
 public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
-
+    private final RegistrationService registrationService;
     private final ModelMapper mapper = new ModelMapper();
 
     @Override
@@ -29,35 +30,40 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDto getClient(String email) {
-        if (clientRepository.existsByEmail(email)) {
-            return mapToDto(clientRepository.findByEmail(email));
-        }
-        throw new ResourceNotFoundException("Client not found");
+    public ClientDto getClient(long clientId) {
+//        if (clientRepository.existsById(id)) {
+//            return mapToDto(clientRepository.findById(id));
+//        }
+//        throw new ResourceNotFoundException("Client not found");
+        log.info("Get Client with this id {}", clientId);
+        return mapToDto(clientRepository.findById(clientId).orElseThrow(()-> new IllegalStateException("Client with the id doest not exist")));
+
     }
 
     @Override
-    public ClientDto saveClient(ClientDto clientDto) {
+    public ClientDto saveClient(ClientDto clientDto) throws Exception{
+        AppUser appUser = registrationService.register(new RegistrationRequestDto(
+                clientDto.getFirstName(), clientDto.getLastName(), clientDto.getEmail(),
+                clientDto.getPhoneNumber(), clientDto.getPassword(),
+                clientDto.getRoles()));
         Client client = mapToEntity(clientDto);
-        if (clientRepository.existsByEmail(client.getEmail())) {
-            throw new IllegalStateException("Email already exists");
-        }
+        client.setAppUser(appUser);
         return mapToDto(clientRepository.save(client));
     }
 
     @Transactional
-    public ClientDto updateClient(Long id, ClientDto clientDto) {
+    public ClientDto updateClient(long id, ClientDto clientDto) {
         Client client = clientRepository.findById(id).orElseThrow(() -> new IllegalStateException(
                 "Client with the " + id + "does not exist"));
-        client.setFirstName(clientDto.getFirstName());
-        client.setLastName(clientDto.getLastName());
-        client.setPhoneNumber(clientDto.getPhoneNumber());
+        client.setStreetAddress(clientDto.getStreetAddress());
+        client.setCity(clientDto.getCity());
+        client.setState(clientDto.getState());
 
         return mapToDto(clientRepository.save(client));
     }
 
     @Override
-    public String deleteClient(Long id) {
+    public String deleteClient(long id) {
         if (clientRepository.existsById(id)) {
             clientRepository.deleteById(id);
             return "User deleted!";
