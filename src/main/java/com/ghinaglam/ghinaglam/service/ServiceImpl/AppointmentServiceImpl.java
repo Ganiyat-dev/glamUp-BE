@@ -36,6 +36,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public AppointmentDto createAppointment(long userId, long planId,
                                             AppointmentDto appointmentDto) {
+        log.info("appointmentDto");
 
         Client client = clientRepository.findByAppUser_Id(userId).orElseThrow(() -> new IllegalStateException("Client with the id" + userId + " not found"));
         Plan plan = planRepository.findById(planId).orElseThrow(() -> new IllegalStateException("No Plan found"));
